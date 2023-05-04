@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   env: { browser: true, es2020: true },
   extends: [
@@ -7,8 +8,10 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'html'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'semi': [2, 'always'],
+    'quotes': [2, 'single', { 'avoidEscape': true }]
   },
-}
+};

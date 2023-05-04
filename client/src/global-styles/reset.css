@@ -1,0 +1,26 @@
+*, *::before, *::after { 
+  box-sizing: border-box;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	font: inherit;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body{
+	z-index: 0;
+	line-height: 1.5;
+	min-height: 100%;
+}
+
+img, picture,svg, video {
+	display: block;
+	max-width: 100%;
+}
