@@ -1,80 +1,39 @@
 import * as React from 'react';
-import { useState, useReducer, useEffect } from 'react';
+import { useTimer } from '../../hooks/useTimer';
 
-type Time = {
+interface Time {
   state: {
     deciseconds: number,
     seconds: number,
     minutes: number,
-    hours?: number,
+    hours: number,
   }
 }
 
-const digitFormat = (number: number): string => {
-  return number.toLocaleString('en-US', {
+const timeFormat = (timeElapsed: number): string => {
+  return timeElapsed.toLocaleString('en-US', {
                                 minimumIntegerDigits: 2,
                                 useGrouping: false });
 };
 
 export const Stopwatch = () => {
-  const [time, setTime] = useState<Time>({ 
-    state :{
-      deciseconds: 0,
-      seconds: 0,
-      minutes: 0,
-      hours: 0
-    }
-  });
+  const [{activeTimer, setActiveTimer, time, setTime}] = useTimer();
   const initialState = {
       state: {
+        timeElapsed: 0,
         deciseconds: 0,
         seconds: 0,
         minutes: 0,
         hours: 0
       }
   };
-  const [activeTimer, setActiveTimer] = useState(false);
-  const displayTime = `Time: ${digitFormat(time.state.minutes)}:
-                             ${digitFormat(time.state.seconds)}:
-                             ${digitFormat(time.state.deciseconds)}`;
-  
   const startTimer = () => setActiveTimer(true);
   const stopTimer = () => setActiveTimer(false);
-
-  useEffect(() => { 
-
-    function initialize () {
-      if(time.state.deciseconds>=10){
-        if(time.state.deciseconds%600===0){
-          setTime(prevState => ({
-            ...prevState,
-            [prevState.state.minutes]: prevState.state.minutes++
-          }));
-        }
-        else if(time.state.deciseconds%10===0){
-          setTime(prevState => ({
-            ...prevState,
-            [prevState.state.seconds]: prevState.state.seconds++
-          }));
-        }
-
-      }
-
-      setTime(prevState => ({
-        ...prevState,
-        [prevState.state.deciseconds]: prevState.state.deciseconds++
-      }));
-    }
-
-    const interval = setInterval(function(isActive: boolean){
-      if(isActive===false) clearInterval(interval);
-      else{
-        initialize();
-      }
-    }, 100, activeTimer);  
   
-  return () => clearInterval(interval);
-  }, [activeTimer]);
+  const displayTime = `Time: ${timeFormat(time.state.hours)}: 
+                             ${timeFormat(time.state.minutes)}: 
+                             ${timeFormat(time.state.seconds)}:
+                             ${timeFormat(time.state.deciseconds)}`;
   
   return (
     <div className='container'>
@@ -82,7 +41,7 @@ export const Stopwatch = () => {
         <button onClick={() => startTimer()}>Start</button>
         <button onClick={() => stopTimer()}>Stop</button>
         <button onClick={() => {
-            setTime({...initialState});
+            setTime(initialState);
             setActiveTimer(false);
           }
         }>Reset</button>

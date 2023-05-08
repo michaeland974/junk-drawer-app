@@ -12,7 +12,8 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     'semi': [2, 'always'],
-    'quotes': [2, 'single', { 'avoidEscape': true }]
+    'quotes': [2, 'single', { 'avoidEscape': true }],
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   
 };
