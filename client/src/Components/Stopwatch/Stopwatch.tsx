@@ -1,5 +1,7 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { useTimer } from '../../hooks/useTimer';
+import { ButtonGroup } from './ButtonGroup';
 
 interface Time {
   state: {
@@ -18,6 +20,7 @@ const timeFormat = (timeElapsed: number): string => {
 
 export const Stopwatch = () => {
   const [{activeTimer, setActiveTimer, time, setTime}] = useTimer();
+  const [buttonStatus, setButtonStatus] = useState<'Start' | 'Stop'>('Start');
   const initialState = {
       state: {
         timeElapsed: 0,
@@ -27,8 +30,19 @@ export const Stopwatch = () => {
         hours: 0
       }
   };
-  const startTimer = () => setActiveTimer(true);
-  const stopTimer = () => setActiveTimer(false);
+  const startTimer = () => {
+    setActiveTimer(true);
+    setButtonStatus('Stop');
+  };
+  const stopTimer = () => {
+    setActiveTimer(false);
+    setButtonStatus('Start');
+  };
+  const resetTimer = () => {
+    setTime(initialState);
+    setActiveTimer(false);
+    setButtonStatus('Start');
+  };
   
   const displayTime = `Time: ${timeFormat(time.state.hours)}: 
                              ${timeFormat(time.state.minutes)}: 
@@ -37,15 +51,9 @@ export const Stopwatch = () => {
   
   return (
     <div className='container'>
-      <div className='buttonGroup'>
-        <button onClick={() => startTimer()}>Start</button>
-        <button onClick={() => stopTimer()}>Stop</button>
-        <button onClick={() => {
-            setTime(initialState);
-            setActiveTimer(false);
-          }
-        }>Reset</button>
-      </div>
+      <ButtonGroup toggle={() => activeTimer ? stopTimer() : startTimer()} 
+                   reset={() => resetTimer()} 
+                   buttonText={buttonStatus}/>
       <span>{displayTime}</span>
     </div>
   );

@@ -26,37 +26,37 @@ export const useTimer = () => {
   const setState = (valueProp: keyof Time['state'], 
                     setFunction: React.Dispatch<React.SetStateAction<Time>>, 
                     action: 'increment' | 'reset') => {  
-    
     if(action==='increment'){
-      return setFunction(prevState => ({
-        ...prevState,
-        [prevState.state[valueProp]]: prevState.state[valueProp]++
-      }));
+        return setFunction(prevState => ({
+          ...prevState,
+          [prevState.state[valueProp]]: prevState.state[valueProp]++
+        }));
     }
     else if(action==='reset'){
       return setFunction(prevState => ({
         ...prevState,
-        [prevState.state[valueProp]]: 0
+        [prevState.state[valueProp]]: prevState.state[valueProp]=0
       }));
     }
   };
   
   function incrementer () {
     setState('timeElapsed', setTime, 'increment');
-    setState('deciseconds', setTime, 'increment');
     const {timeElapsed} = time.state;
     
-    if(timeElapsed>=10){
-      if(timeElapsed%36000===0){
-        setState('hours', setTime, 'increment');
-      }
-      else if(timeElapsed%600===0){
-        setState('minutes', setTime, 'increment');
-      }
-      else if(timeElapsed%10===0){
-        setState('seconds', setTime, 'increment');
-      }
+    if(timeElapsed>9){
+        if(timeElapsed%36000===0){
+          setState('hours', setTime, 'increment');
+        }
+        else if(timeElapsed%600===0){
+          setState('minutes', setTime, 'increment');
+        }
+        else if(timeElapsed%10===0){
+          setState('seconds', setTime, 'increment');
+          setState('deciseconds', setTime, 'reset');
+        }
     }
+      setState('deciseconds', setTime, 'increment'); 
   }
 
   useEffect(() => { 
