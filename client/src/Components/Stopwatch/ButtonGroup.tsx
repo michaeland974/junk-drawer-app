@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 
 type Props = {
   toggle: React.MouseEventHandler<HTMLButtonElement>,
@@ -10,7 +9,7 @@ type Props = {
 export const ButtonGroup: React.FC<Props> = ({toggle, reset, buttonText}) => {
   return(
     <div className='buttonGroup'>
-        <button onClick={toggle}>{buttonText}</button>
+        <button onClick={toggle} data-testid="toggle-button">{buttonText}</button>
         <button onClick={reset}>Reset</button>
     </div>
   );

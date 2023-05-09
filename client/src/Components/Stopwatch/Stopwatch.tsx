@@ -1,41 +1,27 @@
-import * as React from 'react';
-import {useState} from 'react';
 import { useTimer } from '../../hooks/useTimer';
 import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
 
-interface Time {
-  state: {
-    deciseconds: number,
-    seconds: number,
-    minutes: number,
-    hours: number,
-  }
-}
-
 export const Stopwatch = () => {
-  const [{activeTimer, setActiveTimer, time, setTime, initialState}] = useTimer();
-  const [buttonStatus, setButtonStatus] = useState<'Start'|'Stop'>('Start');
- 
+  const [{time, setTime, initialState, 
+          timerStatus, setTimerStatus}] = useTimer();
+
   const startTimer = () => {
-    setActiveTimer(true);
-    setButtonStatus('Stop');
+    setTimerStatus({isActive: true, toggle: 'Stop'});
   };
   const stopTimer = () => {
-    setActiveTimer(false);
-    setButtonStatus('Start');
+    setTimerStatus({isActive: false, toggle: 'Start'});
   };
   const resetTimer = () => {
     setTime(initialState);
-    setActiveTimer(false);
-    setButtonStatus('Start');
+    setTimerStatus({isActive: false, toggle: 'Start'});
   };
   
   return (
     <div className='container'>
-      <ButtonGroup toggle={() => activeTimer ? stopTimer() : startTimer()} 
+      <ButtonGroup toggle={() => timerStatus.isActive? stopTimer() : startTimer()} 
                    reset={() => resetTimer()} 
-                   buttonText={buttonStatus}/>
+                   buttonText={timerStatus.toggle}/>
       <span>{timeFormat(time.state.timeElapsed)}</span>
     </div>
   );

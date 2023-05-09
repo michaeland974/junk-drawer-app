@@ -1,4 +1,4 @@
-import { timeFormat } from '../../utils/timeFormat';
+import { timeFormat } from '../../../utils/timeFormat';
 import {describe, expect, test} from '@jest/globals';
 
 const format0 = 'Time: 00:00:00:00';

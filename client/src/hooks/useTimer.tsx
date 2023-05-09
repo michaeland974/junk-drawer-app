@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 
-interface Time {
+type Time = {
   state: {
     timeElapsed: number,
     deciseconds: number,
@@ -11,8 +10,16 @@ interface Time {
   }
 }
 
+type TimerStatus = {
+  isActive: boolean, 
+  toggle: 'Start' | 'Stop'
+}
+
 export const useTimer = () => {
-  const [activeTimer, setActiveTimer] = useState(false);
+  const [timerStatus, setTimerStatus] = useState<TimerStatus>({
+    isActive: false,
+    toggle: 'Start'
+  });
   const initialState: Time = {
     state: {
       timeElapsed: 0,
@@ -23,31 +30,28 @@ export const useTimer = () => {
     }
   };
   const [time, setTime] = useState<Time>(initialState);
+  const durationLimit = (time.state.timeElapsed===432000);//12 Hours
   
   const incrementer = () => {
     setTime((prevState) => {
       return {...prevState,
-             [prevState.state.timeElapsed]: prevState.state.timeElapsed++};
+             [time.state.timeElapsed]: time.state.timeElapsed++};
     }); 
   };
 
-  const resetOnLimit = (stateValue: number) => {
-    if(stateValue===20){
-      setActiveTimer(false);
-      setTime(initialState);
-    }
-  };
-  //useEffect(() => resetOnLimit(time.state.timeElapsed), [time]);
   useEffect(() => { 
-    const interval = setInterval(function(isActive: boolean){
-      if(isActive===false) clearInterval(interval);
-      else{
+    const interval =  setInterval(function(isActive: boolean){
+      if(isActive===false || durationLimit){
+        clearInterval(interval);
+        setTimerStatus({isActive: false, toggle:'Start'});
+        durationLimit && setTime(initialState);
+      }else{
         incrementer();
       }
-    }, 100, activeTimer);  
-    return () => clearInterval(interval);
-  }, [activeTimer]);
-
-  return [{activeTimer, setActiveTimer, 
-           time, setTime, initialState}];
+    }, 100, (timerStatus.isActive));  
+  return () => clearInterval(interval);
+  }, [timerStatus]);
+  
+  return [{time, setTime, initialState, 
+           timerStatus, setTimerStatus}];
 };
