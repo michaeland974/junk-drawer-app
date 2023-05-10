@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react';
+import { decode } from 'html-entities';
 
 type Time = {
   state: {
@@ -12,13 +13,13 @@ type Time = {
 
 type TimerStatus = {
   isActive: boolean, 
-  toggle: 'Start' | 'Stop'
+  toggleStatus: 'play' | 'pause',
 }
 
 export const useTimer = () => {
   const [timerStatus, setTimerStatus] = useState<TimerStatus>({
     isActive: false,
-    toggle: 'Start'
+    toggleStatus: 'play'
   });
   const initialState: Time = {
     state: {
@@ -43,7 +44,7 @@ export const useTimer = () => {
     const interval =  setInterval(function(isActive: boolean){
       if(isActive===false || durationLimit){
         clearInterval(interval);
-        setTimerStatus({isActive: false, toggle:'Start'});
+        setTimerStatus({isActive: false, toggleStatus: 'play'});
         durationLimit && setTime(initialState);
       }else{
         incrementer();

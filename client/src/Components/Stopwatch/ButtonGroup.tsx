@@ -1,15 +1,30 @@
 import * as React from 'react';
+import styles from './styles/ButtonGroup.module.css';
+
+type Options = 'play' | 'pause' | 'reset';
 
 type Props = {
-  toggle: React.MouseEventHandler<HTMLButtonElement>,
-  reset: React.MouseEventHandler<HTMLButtonElement>,
-  buttonText: string;
+  actions: Record<Options, React.MouseEventHandler<HTMLButtonElement>>
+  icons: Record<Options, string>
+  condition: boolean,
+  status: string,
 }
-export const ButtonGroup: React.FC<Props> = ({toggle, reset, buttonText}) => {
+export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, status}) => {
+  const {play, pause, reset} = actions;
+  
+  const iconWithId = (icon: string, status: string) => {
+    return <span id={styles[status]}>{icon}</span>;
+  };
   return(
     <div className='button-group'>
-        <button onClick={toggle} data-testid="toggle-button">{buttonText}</button>
-        <button onClick={reset}>Reset</button>
+        <button onClick={(e) => {condition ? play(e) : 
+                                             pause(e);}} 
+                data-testid="toggle-button">{condition ? iconWithId(icons.play, status):  
+                                                         iconWithId(icons.pause, status)}
+        </button>
+        <button onClick={(e) => reset(e)}
+                data-testid="reset-button">{iconWithId(icons.reset, 'reset')}
+        </button>
     </div>
   );
 };
