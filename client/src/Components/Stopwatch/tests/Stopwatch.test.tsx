@@ -21,7 +21,7 @@ describe('button clicks', () => {
     const initialTimeState = 'Time: 00:00:00:00';
     const toggleButton = await screen.findByTestId('toggle-button');
     const resetButton = await screen.findByText('Reset');
-    const timeDisplay = await screen.findByText(initialTimeState);
+    const timeDisplay = await screen.findByTestId('time-display');
       await user.click(toggleButton);//timer has started
       await waitFor(() => {
         expect(screen.queryByText(initialTimeState)).toBeNull();

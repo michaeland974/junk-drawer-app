@@ -1,6 +1,7 @@
 import { useTimer } from '../../hooks/useTimer';
 import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
+import { TimeDisplay } from './TimeDisplay';
 
 export const Stopwatch = () => {
   const [{time, setTime, initialState, 
@@ -16,13 +17,13 @@ export const Stopwatch = () => {
     setTime(initialState);
     setTimerStatus({isActive: false, toggle: 'Start'});
   };
-  
+
   return (
     <div className='container'>
       <ButtonGroup toggle={() => timerStatus.isActive? stopTimer() : startTimer()} 
                    reset={() => resetTimer()} 
                    buttonText={timerStatus.toggle}/>
-      <span>{timeFormat(time.state.timeElapsed)}</span>
+      <TimeDisplay renderedTime={timeFormat(time.state.timeElapsed)}/>
     </div>
   );
 };
