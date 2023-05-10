@@ -2,13 +2,13 @@ import * as React from 'react';
 import styles from './styles/ButtonGroup.module.css';
 
 type Options = 'play' | 'pause' | 'reset';
-
 type Props = {
   actions: Record<Options, React.MouseEventHandler<HTMLButtonElement>>
   icons: Record<Options, string>
   condition: boolean,
   status: string,
 }
+
 export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, status}) => {
   const {play, pause, reset} = actions;
   
