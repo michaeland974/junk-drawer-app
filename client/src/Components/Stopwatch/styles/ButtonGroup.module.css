@@ -1,10 +1,39 @@
-#reset{
-  background-color: green;
+.wrapper{
+  --mobile-button-dimension: 16px;
+
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
 }
+
+.toggle-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  width: var(--mobile-button-dimension);
+  height: var(--mobile-button-dimension);
+  background-color: white;
+  color: var(--secondary-blue);
+  line-height: 1;
+  padding: var(--mobile-button-dimension);
+}
+
+#reset{ color: white;}
+#pause{ font-size: 0.5em;}
 #play{
-  background-color: orange;
+  font-size: 1em;
+  padding: 16px 15px 16px 17px;
 }
-#pause{
-  color: green;
+
+.toggle-button:active, 
+#reset:active{
+  opacity: 0.5;
 }
+
+
+
+
+
 

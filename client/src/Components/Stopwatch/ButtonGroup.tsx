@@ -16,11 +16,13 @@ export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, status}
     return <span id={styles[status]}>{icon}</span>;
   };
   return(
-    <div className='button-group'>
+    <div className={styles['wrapper']}>
         <button onClick={(e) => {condition ? play(e) : 
                                              pause(e);}} 
-                data-testid="toggle-button">{condition ? iconWithId(icons.play, status):  
-                                                         iconWithId(icons.pause, status)}
+                id={styles[status]}
+                className={styles['toggle-button']}
+                data-testid="toggle-button">{condition ? icons.play:  
+                                                         icons.pause}
         </button>
         <button onClick={(e) => reset(e)}
                 data-testid="reset-button">{iconWithId(icons.reset, 'reset')}

@@ -1,8 +1,9 @@
+import {decode} from 'html-entities';
+import styles from './styles/Stopwatch.module.css';
 import { useTimer } from '../../hooks/useTimer';
 import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
 import { TimeDisplay } from './TimeDisplay';
-import {decode} from 'html-entities';
 
 export const Stopwatch = () => {
   const icons = {
@@ -23,12 +24,12 @@ export const Stopwatch = () => {
   };
 
   return (
-    <div className='container'>
+    <div className={styles['container']}>
+      <TimeDisplay renderedTime={timeFormat(time.state.timeElapsed)}/>
       <ButtonGroup actions={toggleActions} 
                    condition={!timerStatus.isActive}
                    icons={icons}
                    status={timerStatus.toggleStatus}/>
-      <TimeDisplay renderedTime={timeFormat(time.state.timeElapsed)}/>
     </div>
   );
 };

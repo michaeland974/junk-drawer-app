@@ -1,0 +1,8 @@
+.display{
+  color: white;
+  border-top: 1px solid var(--primary-with-opacity);
+}
+
+#deciseconds{
+  font-size: var(--fs-400);
+}

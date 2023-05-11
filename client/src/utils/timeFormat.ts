@@ -8,8 +8,9 @@ export const timeFormat = (duration: number): string => {
     return value.toLocaleString('en-US', { minimumIntegerDigits: 2,
                                            useGrouping: false });
   };
-  return 'Time: '+digitFormat(hours)+':'
-                 +digitFormat(minutes)+':'
-                 +digitFormat(seconds)+':'
-                 +digitFormat(deciseconds);
+
+  return digitFormat(hours)+':'
+        +digitFormat(minutes)+':'
+        +digitFormat(seconds)+':'
+        +digitFormat(deciseconds);
 };
