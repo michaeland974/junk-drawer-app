@@ -5,12 +5,13 @@ import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
 import { TimeDisplay } from './TimeDisplay';
 
+export const icons = {
+  play: decode('&#x25B8;'),
+  pause: decode('&#10074;&#10074;'),
+  reset: decode('&#8630;'),
+};
+
 export const Stopwatch = () => {
-  const icons = {
-    play: decode('&#x25B8;'),
-    pause: decode('&#10074;&#10074;'),
-    reset: decode('&#8630;'),
-  };
   const [{time, setTime, initialState, 
           timerStatus, setTimerStatus}] = useTimer();
 

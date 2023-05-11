@@ -1,11 +1,11 @@
 import { timeFormat } from '../../../utils/timeFormat';
 import {describe, expect, test} from '@jest/globals';
 
-const format0 = 'Time: 00:00:00:00';
-const format1 = 'Time: 00:00:59:00';
-const format2 = 'Time: 00:01:00:00';
-const format3 = 'Time: 00:01:01:00';
-const format4 = 'Time: 07:00:06:00';
+const format0 = '00:00:00:00';
+const format1 = '00:00:59:00';
+const format2 = '00:01:00:00';
+const format3 = '00:01:01:00';
+const format4 = '07:00:06:00';
 
 describe('interval in deciseconds formatted to readable time', () => {
   test('default', () => {
