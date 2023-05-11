@@ -13,8 +13,8 @@ export const icons = {
 
 export const Stopwatch = () => {
   const [{time, setTime, initialState, 
-          timerStatus, setTimerStatus}] = useTimer();
-
+    timerStatus, setTimerStatus}] = useTimer();
+   
   const toggleActions = {
     play: () => setTimerStatus({isActive: true, toggleStatus: 'pause'}),
     pause: () => setTimerStatus({isActive: false, toggleStatus: 'play'}),

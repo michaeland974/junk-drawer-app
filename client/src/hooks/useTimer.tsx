@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
+import { useLocalStorage } from './useLocalStorage';
 
-type Time = {
+export interface Time{
   state: {
     timeElapsed: number,
     deciseconds: number,
@@ -30,6 +31,7 @@ export const useTimer = () => {
     }
   };
   const [time, setTime] = useState<Time>(initialState);
+  const [localStorageTime, setLocalStorageTime] = useLocalStorage('storedTime', time);
   const durationLimit = (time.state.timeElapsed===432000);//12 Hours
   
   const incrementer = () => {
@@ -38,6 +40,11 @@ export const useTimer = () => {
              [time.state.timeElapsed]: time.state.timeElapsed++};
     }); 
   };
+
+  useEffect(() => {
+    const localTime: Time['state'] = JSON.parse(localStorageTime as string);
+    setTime({state: localTime});
+  }, []);
 
   useEffect(() => { 
     const interval =  setInterval(function(isActive: boolean){
