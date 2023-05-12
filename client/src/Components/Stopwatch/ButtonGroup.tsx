@@ -1,31 +1,34 @@
 import * as React from 'react';
 import styles from './styles/ButtonGroup.module.css';
+import { Time } from '../../hooks/useTimer';
 
 type Options = 'play' | 'pause' | 'reset';
 type Props = {
-  actions: Record<Options, React.MouseEventHandler<HTMLButtonElement>>
+  actions: {
+    button: React.Dispatch<{type: Options}>,
+    time: React.Dispatch<React.SetStateAction<Time>>
+  },
   icons: Record<Options, string>
   condition: boolean,
   status: string,
+  initialState: Time
 }
 
-export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, status}) => {
-  const {play, pause, reset} = actions;
-  
-  const iconWithId = (icon: string, status: string) => {
-    return <span id={styles[status]}>{icon}</span>;
-  };
+export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, 
+                                              status, initialState}) => {
   return(
     <div className={styles['wrapper']}>
-        <button onClick={(e) => {condition ? play(e) : 
-                                             pause(e);}} 
-                id={styles[status]}
+        <button id={styles[status]}
+                onClick={() => {condition ? actions.button({type: 'play'}) : 
+                                            actions.button({type: 'pause'});}} 
                 className={styles['toggle-button']}
                 data-testid="toggle-button">{condition ? icons.play:  
                                                          icons.pause}
         </button>
-        <button onClick={(e) => reset(e)}
-                data-testid="reset-button">{iconWithId(icons.reset, 'reset')}
+        <button id={styles['reset']}
+                onClick={() => { actions.button({type: 'reset'});
+                                 actions.time(initialState); }}
+                data-testid="reset-button">{icons.reset}
         </button>
     </div>
   );

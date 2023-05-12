@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useReducer} from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 export interface Time{
@@ -13,13 +13,22 @@ export interface Time{
 
 type TimerStatus = {
   isActive: boolean, 
-  toggleStatus: 'play' | 'pause',
+  toggle: 'play' | 'pause'
 }
 
+const reducer = (state: TimerStatus, 
+                 action:{type:'play'|'pause'|'reset'}):TimerStatus => {
+  switch (action.type) {
+    case 'play': return {isActive: true, toggle: 'pause'};
+    case 'pause': return {isActive: false, toggle: 'play'};
+    case 'reset': return {isActive: false, toggle: 'play'};
+  }
+};
+
 export const useTimer = () => {
-  const [timerStatus, setTimerStatus] = useState<TimerStatus>({
+  const [timerStatus, dispatch] = useReducer(reducer, {
     isActive: false,
-    toggleStatus: 'play'
+    toggle: 'play'
   });
   const initialState: Time = {
     state: {
@@ -47,18 +56,17 @@ export const useTimer = () => {
   }, []);
 
   useEffect(() => { 
-    const interval =  setInterval(function(isActive: boolean){
+    const interval = setInterval(function(isActive: boolean){
       if(isActive===false || durationLimit){
         clearInterval(interval);
-        setTimerStatus({isActive: false, toggleStatus: 'play'});
+        dispatch({ type: 'reset' }); 
         durationLimit && setTime(initialState);
       }else{
         incrementer();
       }
-    }, 100, (timerStatus.isActive));  
+    }, 100, (timerStatus.isActive)); 
   return () => clearInterval(interval);
-  }, [timerStatus]);
+}, [timerStatus]);
   
-  return [{time, setTime, initialState, 
-           timerStatus, setTimerStatus}];
+  return [{time, setTime, initialState, timerStatus, dispatch}];
 };

@@ -1,5 +1,6 @@
 import {decode} from 'html-entities';
 import styles from './styles/Stopwatch.module.css';
+import { useReducer } from 'react';
 import { useTimer } from '../../hooks/useTimer';
 import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
@@ -13,24 +14,17 @@ export const icons = {
 
 export const Stopwatch = () => {
   const [{time, setTime, initialState, 
-    timerStatus, setTimerStatus}] = useTimer();
-   
-  const toggleActions = {
-    play: () => setTimerStatus({isActive: true, toggleStatus: 'pause'}),
-    pause: () => setTimerStatus({isActive: false, toggleStatus: 'play'}),
-    reset: () => {
-      setTime(initialState);
-      setTimerStatus({isActive: false, toggleStatus: 'play'});
-    }
-  };
-
+          timerStatus, dispatch}] = useTimer();
+  
   return (
     <div className={styles['container']}>
       <TimeDisplay renderedTime={timeFormat(time.state.timeElapsed)}/>
-      <ButtonGroup actions={toggleActions} 
+      <ButtonGroup actions={{button: dispatch, 
+                             time: setTime}} 
                    condition={!timerStatus.isActive}
                    icons={icons}
-                   status={timerStatus.toggleStatus}/>
+                   initialState={initialState}
+                   status={timerStatus.toggle}/>
     </div>
   );
 };
