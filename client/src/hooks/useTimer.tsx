@@ -1,22 +1,8 @@
 import { useState, useEffect, useReducer} from 'react';
 import { useLocalStorage } from './useLocalStorage';
+import { Time, TimerStatus, initialState } from '../Components/Stopwatch/interfaces';
 
-export interface Time{
-  state: {
-    timeElapsed: number,
-    deciseconds: number,
-    seconds: number,
-    minutes: number,
-    hours: number,
-  }
-}
-
-type TimerStatus = {
-  isActive: boolean, 
-  toggle: 'play' | 'pause'
-}
-
-const reducer = (state: TimerStatus, 
+const reducer = (_state: TimerStatus, 
                  action:{type:'play'|'pause'|'reset'}):TimerStatus => {
   switch (action.type) {
     case 'play': return {isActive: true, toggle: 'pause'};
@@ -26,21 +12,12 @@ const reducer = (state: TimerStatus,
 };
 
 export const useTimer = () => {
+  const [time, setTime] = useState<Time>(initialState);
+  const [localStorageTime] = useLocalStorage('storedTime', time);
   const [timerStatus, dispatch] = useReducer(reducer, {
     isActive: false,
     toggle: 'play'
   });
-  const initialState: Time = {
-    state: {
-      timeElapsed: 0,
-      deciseconds: 0,
-      seconds: 0,
-      minutes: 0,
-      hours: 0
-    }
-  };
-  const [time, setTime] = useState<Time>(initialState);
-  const [localStorageTime, setLocalStorageTime] = useLocalStorage('storedTime', time);
   const durationLimit = (time.state.timeElapsed===432000);//12 Hours
   
   const incrementer = () => {

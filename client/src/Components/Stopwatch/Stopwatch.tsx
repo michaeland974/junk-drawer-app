@@ -1,9 +1,10 @@
-import {decode} from 'html-entities';
-import styles from './styles/Stopwatch.module.css';
-import { useReducer } from 'react';
+import { decode } from 'html-entities';
 import { useTimer } from '../../hooks/useTimer';
-import { ButtonGroup } from './ButtonGroup';
 import { timeFormat } from '../../utils/timeFormat';
+/* Styles */
+import styles from './styles/Stopwatch.module.css';
+/* Components */
+import { ButtonGroup } from './ButtonGroup';
 import { TimeDisplay } from './TimeDisplay';
 
 export const icons = {

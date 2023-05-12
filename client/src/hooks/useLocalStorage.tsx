@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import { Time } from './useTimer';
+import { Time } from '../Components/Stopwatch/interfaces';
 
 const getStoredValue = (key: string): string|undefined => {
   return key ? localStorage.getItem(key) as string : undefined;

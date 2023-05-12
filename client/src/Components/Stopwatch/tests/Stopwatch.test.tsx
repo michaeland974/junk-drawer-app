@@ -3,8 +3,8 @@ import {render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import { icons } from '../Stopwatch';
-
 import { Stopwatch } from '../Stopwatch';
+
 describe('button clicks', () => {
   test(('toggle button changes text on click'), async() => {
     render(<Stopwatch/>);

@@ -3,20 +3,21 @@
 
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5em;
 }
 
-.toggle-button{
+.toggle-button1{
   display: flex;
   justify-content: center;
   align-items: center;
 
   border-radius: 50%;
+  background-color: white;
+  color: var(--secondary-blue); 
+  line-height: 1;
   width: var(--mobile-button-dimension);
   height: var(--mobile-button-dimension);
-  background-color: white;
-  color: var(--secondary-blue);
-  line-height: 1;
   padding: var(--mobile-button-dimension);
 }
 
