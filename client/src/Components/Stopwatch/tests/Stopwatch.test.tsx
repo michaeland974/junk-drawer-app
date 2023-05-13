@@ -1,11 +1,17 @@
 /** @jest-environment jsdom */
 import {render, screen, waitFor} from '@testing-library/react';
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom'; 
 import user from '@testing-library/user-event';
 import { icons } from '../Stopwatch';
 import { Stopwatch } from '../Stopwatch';
+import { initialState } from '../interfaces';
 
 describe('button clicks', () => {
+  beforeEach(() => {
+    const {setItem} = window.localStorage;
+           setItem('storedTime', JSON.stringify(initialState.state));
+  });
+  
   test(('toggle button changes text on click'), async() => {
     render(<Stopwatch/>);
     const {play, pause} = icons;
@@ -17,6 +23,7 @@ describe('button clicks', () => {
         await user.click(toggleButton);
       expect(toggleButton).toHaveTextContent(play);
     });
+  
   test(('reset button will reset time display on click'), async() => {
     render(<Stopwatch/>);
     

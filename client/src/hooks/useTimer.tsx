@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer} from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import { Time, TimerStatus, initialState } from '../Components/Stopwatch/interfaces';
+import { TimerStatus, Time, initialState} from '../Components/Stopwatch/interfaces';
 
 const reducer = (_state: TimerStatus, 
                  action:{type:'play'|'pause'|'reset'}):TimerStatus => {
@@ -12,7 +12,7 @@ const reducer = (_state: TimerStatus,
 };
 
 export const useTimer = () => {
-  const [time, setTime] = useState<Time>(initialState);
+  const [time, setTime] = useState<Time>({...initialState, });
   const [localStorageTime] = useLocalStorage('storedTime', time);
   const [timerStatus, dispatch] = useReducer(reducer, {
     isActive: false,

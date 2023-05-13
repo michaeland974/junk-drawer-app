@@ -19,7 +19,7 @@ export const Stopwatch = () => {
   
   return (
     <div className={styles['container']}>
-      <TimeDisplay renderedTime={timeFormat(time.state.timeElapsed)}/>
+      <TimeDisplay renderedTime={timeFormat(time.state['timeElapsed'])}/>
       <ButtonGroup actions={{button: dispatch, 
                              time: setTime}} 
                    condition={!timerStatus.isActive}

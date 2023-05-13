@@ -17,10 +17,10 @@ export type TimerStatus = {
 
 export const initialState: Time = {
   state: {
-    timeElapsed: 0,
     deciseconds: 0,
     seconds: 0,
     minutes: 0,
-    hours: 0
+    hours: 0,
+    timeElapsed: 0,
   }
 };
