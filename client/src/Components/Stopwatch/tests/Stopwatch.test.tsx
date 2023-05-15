@@ -1,24 +1,20 @@
 /** @jest-environment jsdom */
 import {render, screen, waitFor} from '@testing-library/react';
-import '@testing-library/jest-dom'; 
+import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import { icons } from '../Stopwatch';
-import { Stopwatch } from '../Stopwatch';
-import { Time } from '../interfaces';
+import { initializeLocalStorage } from '../../../utils/initializeLocalStorage';
 
-const initialState: Time = {
-  state: {
-    timeElapsed: 0,
-    deciseconds: 0,
-    seconds: 0,
-    minutes: 0,
-    hours: 0
-  }
-};
+import { Stopwatch } from '../Stopwatch';
 describe('button clicks', () => {
   beforeEach(() => {
-    const {setItem} = window.localStorage;
-           setItem('storedTime', JSON.stringify(initialState.state));
+    initializeLocalStorage('storedTime', {state: {
+      timeElapsed: 0,
+      deciseconds: 0,
+      seconds: 0,
+      minutes: 0,
+      hours: 0
+    }});
   });
   
   test(('toggle button changes text on click'), async() => {
@@ -32,19 +28,19 @@ describe('button clicks', () => {
         await user.click(toggleButton);
       expect(toggleButton).toHaveTextContent(play);
     });
-  
-  test(('reset button will reset time display on click'), async() => {
+  test(('reset button will reset display on click'), async() => {
     render(<Stopwatch/>);
     
     const initialTimeState = '00:00:00:00';
     const toggleButton = await screen.findByTestId('toggle-button');
     const resetButton = await screen.findByTestId('reset-button');
     const timeDisplay = await screen.findByTestId('time-display');
-      await user.click(toggleButton);//timer has started
+  
+    await user.click(toggleButton);//timer has started
       await waitFor(() => {
         expect(screen.queryByText(initialTimeState)).toBeNull();
       });
-      await user.click(resetButton);
+    await user.click(resetButton);
       await waitFor(() => {
         expect(timeDisplay).toHaveTextContent(initialTimeState);
       });
