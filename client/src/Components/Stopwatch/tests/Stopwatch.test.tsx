@@ -4,8 +4,17 @@ import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import { icons } from '../Stopwatch';
 import { Stopwatch } from '../Stopwatch';
-import { initialState } from '../interfaces';
+import { Time } from '../interfaces';
 
+const initialState: Time = {
+  state: {
+    timeElapsed: 0,
+    deciseconds: 0,
+    seconds: 0,
+    minutes: 0,
+    hours: 0
+  }
+};
 describe('button clicks', () => {
   beforeEach(() => {
     const {setItem} = window.localStorage;

@@ -15,12 +15,3 @@ export type TimerStatus = {
   toggle: 'play' | 'pause'
 }
 
-export const initialState: Time = {
-  state: {
-    deciseconds: 0,
-    seconds: 0,
-    minutes: 0,
-    hours: 0,
-    timeElapsed: 0,
-  }
-};
