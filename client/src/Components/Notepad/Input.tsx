@@ -9,9 +9,9 @@ type Props = {
 export const Input: React.FC<Props> = ({value, handleChange, handleAddNote}) => {
   return(
     <> 
-      <input  value={value}
-              onChange={handleChange}
-              className={styles['input']}/>
+      <input value={value}
+             onChange={handleChange}
+             className={styles['input']}/>
       <button onClick={handleAddNote}>+</button>
     </>
   );

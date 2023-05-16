@@ -15,12 +15,24 @@ export const Notepad = () => {
     setList((prevList) => ([...prevList, input]));
   };
 
+  const editNote = (e: React.ChangeEvent<HTMLInputElement>, 
+                    index: number) => {
+    const copy = list.slice();
+    for(let i=0; i<list.length; i++){
+      if(i===index){
+        copy[index] = e.target.value;
+      }
+    }
+    setList(copy);
+  };
+
   return (
     <div className={styles['container']}>
       <Input value={input} 
              handleChange={handleChange}
              handleAddNote={handleAddNote}/>
       <List noteList={list} 
+            editNote={editNote}
             setList={setList}/>
     </div>
   );  
