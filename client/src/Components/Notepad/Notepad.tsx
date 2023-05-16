@@ -11,29 +11,29 @@ export const Notepad = () => {
     setInput(e.target.value);
   };
 
-  const handleAddNote = (e: React.MouseEvent) => {
+  const handleAddNote = () => {
     setList((prevList) => ([...prevList, input]));
   };
 
   const editNote = (e: React.ChangeEvent<HTMLInputElement>, 
                     index: number) => {
-    const copy = list.slice();
+    const editedList = list.slice();
     for(let i=0; i<list.length; i++){
       if(i===index){
-        copy[index] = e.target.value;
+        editedList[index] = e.target.value;
       }
     }
-    setList(copy);
+    setList(editedList);
   };
 
   return (
     <div className={styles['container']}>
-      <Input value={input} 
-             handleChange={handleChange}
-             handleAddNote={handleAddNote}/>
-      <List noteList={list} 
-            editNote={editNote}
-            setList={setList}/>
+      <Input value={input}
+             actions={{change: handleChange,
+                       add: handleAddNote}}/>
+      <List notes={list}
+            actions={{set: setList, 
+                      edit: editNote}}/>
     </div>
   );  
 };

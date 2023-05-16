@@ -2,14 +2,16 @@ import styles from './styles/Input.module.css';
 import { Note } from './Note';
 
 type Props = { 
-  noteList: string[] 
-  setList: React.Dispatch<React.SetStateAction<string[]>>
-  editNote: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void
+  notes: string[] 
+  actions : {
+    set: React.Dispatch<React.SetStateAction<string[]>>,
+    edit: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void,
+  }
 };
 
-export const List: React.FC<Props> = ({noteList, setList, editNote}) => {
+export const List: React.FC<Props> = ({notes, actions}) => {
   const handleDelete = (index: number) => {
-    setList((prevState) => (
+    actions.set((prevState) => (
       prevState.filter((_, i) => (i !== index))
     ));
   };
@@ -18,14 +20,14 @@ export const List: React.FC<Props> = ({noteList, setList, editNote}) => {
     return list.map((note: string, i:number) => {
       return <Note value={note} 
                    key={i} 
-                   handleChange={(e) => editNote(e, i)}
-                   handleDelete={() => handleDelete(i)}/>;
+                   actions={{delete: () => handleDelete(i), 
+                             change: (e) => actions.edit(e, i)}}/>;
     });
   };
   
   return(
     <ul className={styles['list']}>
-      {renderList(noteList)}
+      {renderList(notes)}
     </ul>
   );
 };
