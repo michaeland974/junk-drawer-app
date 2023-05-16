@@ -1,15 +1,7 @@
-import { useState, useEffect, useReducer} from 'react';
+import { useState, useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
-import { TimerStatus, Time } from '../Components/Stopwatch/interfaces';
-
-const reducer = (_state: TimerStatus, 
-                 action:{type:'play'|'pause'|'reset'}):TimerStatus => {
-  switch (action.type) {
-    case 'play': return {isActive: true, toggle: 'pause'};
-    case 'pause': return {isActive: false, toggle: 'play'};
-    case 'reset': return {isActive: false, toggle: 'play'};
-  }
-};
+import { Time } from '../Components/Stopwatch/interfaces';
+import { useToggle } from './useToggle';
 
 export const useTimer = () => {
   const initialState: Time = {
@@ -23,10 +15,7 @@ export const useTimer = () => {
   };
   const [time, setTime] = useState<Time>(initialState);
   const [localStorageTime] = useLocalStorage('storedTime', time);
-  const [timerStatus, dispatch] = useReducer(reducer, {
-    isActive: false,
-    toggle: 'play'
-  });
+  const [toggleValue, toggle] = useToggle(false);
   const durationLimit = (time.state.timeElapsed===432000);//12 Hours
   
   const incrementer = () => {
@@ -45,14 +34,15 @@ export const useTimer = () => {
     const interval = setInterval(function(isActive: boolean){
       if(isActive===false || durationLimit){
         clearInterval(interval);
-        dispatch({ type: 'reset' }); 
+        toggle(false);
         durationLimit && setTime(initialState);
       }else{
         incrementer();
       }
-    }, 100, (timerStatus.isActive)); 
+  }, 100, (toggleValue));
+   
   return () => clearInterval(interval);
-}, [timerStatus]);
+}, [toggleValue]);
   
-  return [{time, setTime, initialState, timerStatus, dispatch}];
+  return [{time, setTime, initialState, toggleValue, toggle}];
 };

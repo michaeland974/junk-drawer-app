@@ -2,7 +2,7 @@
 import {render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
-import { icons } from '../Stopwatch';
+import { icons } from '../ButtonGroup';
 import { initializeLocalStorage } from '../../../utils/initializeLocalStorage';
 
 import { Stopwatch } from '../Stopwatch';

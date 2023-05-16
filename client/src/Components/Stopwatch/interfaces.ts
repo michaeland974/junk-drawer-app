@@ -1,5 +1,3 @@
-export type ButtonOptions = 'play' | 'pause' | 'reset';
-
 export interface Time{
   state: {
     timeElapsed: number,
@@ -8,10 +6,5 @@ export interface Time{
     minutes: number,
     hours: number,
   }
-}
-
-export type TimerStatus = {
-  isActive: boolean, 
-  toggle: 'play' | 'pause'
 }
 

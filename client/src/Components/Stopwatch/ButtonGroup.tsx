@@ -1,31 +1,34 @@
 import * as React from 'react';
+import { decode } from 'html-entities';
 import styles from './styles/ButtonGroup.module.css';
-import { Time, ButtonOptions } from './interfaces';
+import { Time } from './interfaces';
 
 type Props = {
   actions: {
-    button: React.Dispatch<{type: ButtonOptions}>,
+    timerControl: (value?: boolean | undefined) => void,
     time: React.Dispatch<React.SetStateAction<Time>>
   },
-  icons: Record<ButtonOptions, string>
   condition: boolean,
-  status: string,
   initialState: Time
 }
 
-export const ButtonGroup: React.FC<Props> = ({icons, condition, actions, 
-                                              status, initialState}) => {
+export const icons = {
+  play: decode('&#x25B8;'),
+  pause: decode('&#10074;&#10074;'),
+  reset: decode('&#8630;'),
+};
+
+export const ButtonGroup: React.FC<Props> = ({condition, actions, initialState}) => {
   return(
     <div className={styles['wrapper']}>
-        <button id={styles[status]}
-                onClick={() => {condition ? actions.button({type: 'play'}) : 
-                                            actions.button({type: 'pause'});}} 
+        <button id={condition ? styles['play'] : styles['pause']}
+                onClick={() => actions.timerControl()} 
                 className={styles['toggle-button1']}
                 data-testid="toggle-button">{condition ? icons.play:  
                                                          icons.pause}
         </button>
         <button id={styles['reset']}
-                onClick={() => { actions.button({type: 'reset'});
+                onClick={() => { actions.timerControl(false);
                                  actions.time(initialState); }}
                 data-testid="reset-button">{icons.reset}
         </button>
