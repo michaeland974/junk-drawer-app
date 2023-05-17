@@ -1,31 +1,11 @@
 import styles from './styles/Notepad.module.css';
 import { Input } from './Input';
 import { List } from './List';
-import { useState } from 'react';
+import { useNotes } from '../../hooks/useNotes';
 
 export const Notepad = () => {
-  const [input, setInput] = useState('');
-  const [list, setList] = useState<string[]>([]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-  };
-
-  const handleAddNote = () => {
-    setList((prevList) => ([...prevList, input]));
-    setInput('');
-  };
-
-  const editNote = (e: React.ChangeEvent<HTMLInputElement>,
-                    index: number) => {
-    const editedList = list.slice();
-    for(let i=0; i<list.length; i++){
-      if(i===index){
-        editedList[index] = e.target.value;
-      }
-    }
-    setList(editedList);
-  };
+  const [{input, list, setList, 
+          handleChange, handleAddNote, editNote}] = useNotes();
 
   return (
     <div className={styles['container']}>
