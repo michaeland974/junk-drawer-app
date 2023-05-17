@@ -21,6 +21,7 @@ export const List: React.FC<Props> = ({notes, actions}) => {
     return list.map((note: string, i:number) => {
       return <Note value={note} 
                    key={i} 
+                   
                    actions={{delete: () => handleDelete(i),
                              change: (e) => actions.edit(e, i)}}/>;
     });

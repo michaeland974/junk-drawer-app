@@ -15,7 +15,8 @@ export const Input: React.FC<Props> = ({value, actions}) => {
              placeholder='...'
              onChange={actions.change}
              className={styles['input']}/>
-      <button id={styles['add']} 
+      <button id={styles['add']}
+              data-testid='add'
               onClick={actions.add}>+</button>
     </div>
   );

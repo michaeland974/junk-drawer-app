@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const Notepad = () => {
   const [input, setInput] = useState('');
-  const [list, setList] = useState<string[]>(['test']);
+  const [list, setList] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);

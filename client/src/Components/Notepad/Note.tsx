@@ -19,7 +19,8 @@ export const Note: React.FC<Props> = ({value, actions}) => {
   const [editMode, toggleEditMode] = useToggle(true);
   
   return(
-  <li className={styles['container']}>
+  <li className={styles['container']}
+      data-testid='list-items'>
     <div className={styles['input-group']}>
       <input type='checkbox'/>
       <input value={value}
@@ -33,6 +34,7 @@ export const Note: React.FC<Props> = ({value, actions}) => {
               className={!editMode ? styles['selected'] : ''}
               onClick={() => toggleEditMode()}>{icons.edit}</button>
       <button id={styles['delete']} 
+              data-testid='delete'
               onClick={actions.delete}>{icons.delete}</button>
     </div>
   </li>
