@@ -1,3 +1,31 @@
-.note{
-  border: 1px solid black;
+.container{
+  display: flex;
 }
+
+.input-group{
+  display: flex;
+}
+
+input[type=checkbox]{
+  width: 1.3em;
+  height: 1.3em;
+  border: 1px solid rgba(255, 255, 255, 0.205);
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type=checkbox]:checked{
+  border: 1px solid white;
+  background-color: var(--secondary-purple);
+}
+
+.button-group{
+  display: flex;
+}
+
+.input-group > input:checked + .text {
+  text-decoration: line-through
+}
+
+

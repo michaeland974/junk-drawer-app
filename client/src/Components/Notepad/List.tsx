@@ -1,5 +1,4 @@
-import styles from './styles/Input.module.css';
-import { useToggle } from '../../hooks/useToggle';
+import styles from './styles/List.module.css';
 import { Note } from './Note';
 
 type Props = { 
@@ -11,7 +10,6 @@ type Props = {
 };
 
 export const List: React.FC<Props> = ({notes, actions}) => {
-  //const [editMode, toggleEditMode] = useToggle(false);
   
   const handleDelete = (index: number) => {
     actions.set((prevState) => (
@@ -24,7 +22,6 @@ export const List: React.FC<Props> = ({notes, actions}) => {
       return <Note value={note} 
                    key={i} 
                    actions={{delete: () => handleDelete(i),
-                             //toggle: () => toggleEditMode(),
                              change: (e) => actions.edit(e, i)}}/>;
     });
   };

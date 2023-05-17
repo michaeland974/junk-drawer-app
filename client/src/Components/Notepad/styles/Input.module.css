@@ -1,3 +1,18 @@
-.input{
-  border: 1px solid black;
+.container{
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0em 0.5em 0.25em 0.5em;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-purple-with-opacity);
+}
+
+.input::placeholder{
+  color: white;
+  font-family: ManualeExtraBold;
+  letter-spacing: 2px;
+}
+
+#add{
+  padding-bottom: -0.5em;
 }

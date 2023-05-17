@@ -1,3 +1,25 @@
 .container{
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  
+  font-size: var(--fs-400);
+  background-color: var(--secondary-purple);
+  color: white;
+  border-radius: var(--border-radius);
+
+  padding-right: 1em;
+  padding: 1em;
+  width: 20rem;
+  height: 20rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+  background: linear-gradient(145deg, #544259c1, 
+                                      var(--secondary-purple));
+  box-shadow:  5px 5px 0px #423446;
+}
+
+.container::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
 }

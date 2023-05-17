@@ -12,9 +12,11 @@ export const Input: React.FC<Props> = ({value, actions}) => {
   return(
     <div className={styles['container']}> 
       <input value={value}
+             placeholder='...'
              onChange={actions.change}
              className={styles['input']}/>
-      <button onClick={actions.add}>+</button>
+      <button id={styles['add']} 
+              onClick={actions.add}>+</button>
     </div>
   );
 };

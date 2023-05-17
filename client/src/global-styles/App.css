@@ -11,6 +11,7 @@
   --secondary-blue: #345B73;
   --secondary-blue-with-opacity: #345b73c1;
   --secondary-purple: #544259;
+  --secondary-purple-with-opacity: #8c72945b;
   --secondary-pink: #D9B2A9;
   --background2: #A6986F;
   --secondary-pink2: #EBA2F2;
@@ -19,13 +20,14 @@
   --highlight: #BFBE4C;
 
   --rotate: rotate(15deg);
+  --border-radius: 8px;
   --line-height-xl: 1rem;
   --fs-xl: clamp(2rem, 4vw, 3rem);
-  --fs-400: clamp(1rem, 2.5vw, 1.5rem);
+  --fs-400: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 body{
   overflow: hidden;
-  font-family: Manuale;
+  font-family: ManualeSemiBold;
   background-image: url('./../assets/background.svg');
 }

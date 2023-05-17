@@ -6,7 +6,6 @@ type Props = {
   actions: {
     delete: React.MouseEventHandler<HTMLButtonElement>
     change: React.ChangeEventHandler<HTMLInputElement>
-   // toggle: React.MouseEventHandler<HTMLButtonElement>
   }
 };
 
@@ -14,11 +13,14 @@ export const Note: React.FC<Props> = ({value, actions}) => {
   const [editMode, toggleEditMode] = useToggle(true);
   
   return(
-  <li className={styles['note']}>
-    <input value={value}
-           className={styles['text']}
-           readOnly={editMode}
-           onChange={actions.change}/>
+  <li className={styles['container']}>
+    <div className={styles['input-group']}>
+      <input type='checkbox'/>
+      <input value={value}
+             className={styles['text']}
+             readOnly={editMode}
+             onChange={actions.change}/>
+    </div>
     
     <div className={styles['button-group']}>
       <button id={styles['edit']}
