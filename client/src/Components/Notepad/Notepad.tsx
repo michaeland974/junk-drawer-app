@@ -15,7 +15,8 @@ export const Notepad = () => {
     setList((prevList) => ([...prevList, input]));
   };
 
-  const editNote = (e: React.ChangeEvent<HTMLInputElement>, 
+  const editNote = (e: React.ChangeEvent<HTMLInputElement>,
+                    //editMode: boolean,
                     index: number) => {
     const editedList = list.slice();
     for(let i=0; i<list.length; i++){
