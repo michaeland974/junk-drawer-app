@@ -13,7 +13,8 @@ const vitestConfig: VitestUserConfigInterface = {
 export default defineConfig({
   plugins: [react(), eslint(), 'prettier'], 
   server: {
-    port: 8000
+    port: 8000,
+    host: true
   },
   test: vitestConfig.test,
 

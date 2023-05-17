@@ -8,7 +8,7 @@
 }
 
 .input::placeholder{
-  color: white;
+  color: var(--white-with-opacity);
   font-family: ManualeExtraBold;
   letter-spacing: 2px;
 }

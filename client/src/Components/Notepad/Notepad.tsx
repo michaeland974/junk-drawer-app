@@ -13,6 +13,7 @@ export const Notepad = () => {
 
   const handleAddNote = () => {
     setList((prevList) => ([...prevList, input]));
+    setInput('');
   };
 
   const editNote = (e: React.ChangeEvent<HTMLInputElement>,

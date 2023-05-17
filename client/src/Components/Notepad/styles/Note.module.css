@@ -1,5 +1,6 @@
 .container{
   display: flex;
+  --checkbox-size: 0.75em;
 }
 
 .input-group{
@@ -7,25 +8,46 @@
 }
 
 input[type=checkbox]{
-  width: 1.3em;
-  height: 1.3em;
-  border: 1px solid rgba(255, 255, 255, 0.205);
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  margin-right: calc(var(--checkbox-size) * 0.5);
+  align-self: center;
+  /* border: 1px solid rgba(255, 255, 255, 0.205); */
+  border: 1px solid var(--white-with-opacity);
   border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
 }
 
 input[type=checkbox]:checked{
-  border: 1px solid white;
-  background-color: var(--secondary-purple);
+  border: 1px solid var(--secondary-purple);
+  background-color: var(--white-with-opacity);
 }
 
 .button-group{
   display: flex;
-}
+  gap: var(--checkbox-size);
+    /* fixing overflow */
+  transform: translateX(calc(var(--checkbox-size) * -1));
+} 
 
 .input-group > input:checked + .text {
   text-decoration: line-through
+}
+
+#edit, 
+#delete{
+  color: var(--white-with-opacity); 
+}
+
+.selected{
+  border-radius: 25%;
+  background-color: var(--white-with-opacity); /* IE */
+  color: rgba(3, 69, 3, 0.811) !important;
+}
+
+#delete:active {
+  color: rgba(255, 0, 0, 0.655);
 }
 
 

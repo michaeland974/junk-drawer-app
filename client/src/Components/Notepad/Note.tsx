@@ -1,4 +1,5 @@
 import styles from './styles/Note.module.css';
+import { decode } from 'html-entities';
 import { useToggle } from '../../hooks/useToggle';
 
 type Props = { 
@@ -7,6 +8,11 @@ type Props = {
     delete: React.MouseEventHandler<HTMLButtonElement>
     change: React.ChangeEventHandler<HTMLInputElement>
   }
+};
+
+const icons = {
+  edit: decode('&#9998;'),
+  delete: decode('&times;')
 };
 
 export const Note: React.FC<Props> = ({value, actions}) => {
@@ -24,9 +30,10 @@ export const Note: React.FC<Props> = ({value, actions}) => {
     
     <div className={styles['button-group']}>
       <button id={styles['edit']}
-              onClick={() => toggleEditMode()}>edit</button>
+              className={!editMode ? styles['selected'] : ''}
+              onClick={() => toggleEditMode()}>{icons.edit}</button>
       <button id={styles['delete']} 
-              onClick={actions.delete}>x</button>
+              onClick={actions.delete}>{icons.delete}</button>
     </div>
   </li>
   );
