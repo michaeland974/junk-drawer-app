@@ -3,8 +3,13 @@ import {render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import { Notepad } from '../Notepad';
+import { initializeLocalStorage } from '../../../utils/initializeLocalStorage';
 
 describe(('Notepad componenet'), () => {
+  beforeEach(() => {
+    initializeLocalStorage('storedNotes', []);
+  });
+  
   test(('note added on click'), async() => {
     render(<Notepad/>);
     
