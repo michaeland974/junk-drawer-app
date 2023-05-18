@@ -26,7 +26,8 @@ export const useTimer = () => {
   };
 
   useEffect(() => {
-    const localTime: Time['state'] = JSON.parse(localStorageTime as string);
+    const localTime: Time['state'] = JSON.parse(localStorageTime as string) ?? 
+                                     initialState['state'];
     setTime({state: localTime});
   }, []);
 

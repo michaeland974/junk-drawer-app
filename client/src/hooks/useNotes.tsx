@@ -26,7 +26,7 @@ export const useNotes = () => {
   };
   
   useEffect(() => {
-    const localNotes: string[] = JSON.parse(localStorageNotes as string);
+    const localNotes: string[] = JSON.parse(localStorageNotes as string) ?? [];
     setList(localNotes);
   }, []);
   
