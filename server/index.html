@@ -1,53 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youtube iFrame Player</title>
-  </head>
-  
-  <body>
-    <div id="player"></div>
-
-    <script>
-      const id = 'PlEBqUGYVT8';
-      const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      let player;
-      function onYouTubeIframeAPIReady(){
-        player = new YT.Player('player', {
-          height: '200',
-          width: '200',
-          videoId: id,
-          playerVars: {
-            'playsinline': 1
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      let done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      
-      function stopVideo() {
-        player.stopVideo();
-      }
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Player</title>
+</head>
+<body>
+    <audio id="player" 
+           width="400" 
+           controls 
+           autoplay>
+      <source src="/" type="audio/mpeg"/>
+    </audio>
+</body>
 </html>
