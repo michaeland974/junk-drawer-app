@@ -6,13 +6,12 @@ type Props = {
 }
 
 export const MusicPlayer: React.FC<Props> = ({url}) => {
-  const audioRef = useRef(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   return (
     <audio ref={audioRef}
            controls
-           loop
-           autoPlay>
+           loop>
       <source src={url} type="audio/mpeg"/>
     </audio>
   );

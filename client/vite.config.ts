@@ -14,8 +14,14 @@ export default defineConfig({
   plugins: [react(), eslint(), 'prettier'], 
   server: {
     port: 8000,
-    host: true
+    host: true,
+    proxy: {
+      '/stream': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+          secure: false
+      }
+    }
   },
   test: vitestConfig.test,
-
 });

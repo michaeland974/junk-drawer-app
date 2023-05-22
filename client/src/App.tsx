@@ -7,7 +7,7 @@ import './global-styles/App.css';
 export const App = () => {
   return (
     <>
-    <MusicPlayer url='http://localhost:3001/'/>
+    <MusicPlayer url='/stream'/>
     <Stopwatch />
     <Notepad />
     </>
