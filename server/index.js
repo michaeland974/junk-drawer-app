@@ -1,31 +1,34 @@
 import express from 'express'
 import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 const app = express();
 
-app.get("/", (req, res, next) => {
-  const range = req.headers.range;
-  const path = "audio/the-process.mp3";
-  const chunkSize = 10**6;
-  const size = fs.statSync(path).size;
- 
+app.get("/favicon.ico", (req, res) => res.status(204));
+app.get("/stream", (req, res, next) => {
   res.setHeader("Content-Type","audio/mpeg");
   res.setHeader("Accept-Ranges", "bytes");
-  
-  fs.createReadStream(path)
-    .on("data",(chunk) => {
-      res.write(chunk)
-    })
-});
+  const dir = fs.readdirSync("./audio");
+  let audio;
 
-app.get("/stream", (req, res, next) => {
-  res.sendFile(__dirname+"/index.html");
+  const main = () => {
+    if(!dir.length){
+      res.end();
+      return
+    } 
+    else{
+      audio = fs.createReadStream("audio/" + dir[0]);
+      audio.on("data", (chunk) => {
+        res.write(chunk);
+      })
+      audio.on("end", function() {
+        dir.shift();
+        main();        
+      });
+    }
+  }
+
+  main();
 });
 
 app.listen(3001, () => {
   console.log("Server started on port 3001")
-})
+});
