@@ -3,7 +3,8 @@ import { Time } from '../Components/Stopwatch/interfaces';
 
 type StorageKeys = {
   storedTime: string,
-  storedNotes: string
+  storedNotes: string,
+  storedAudio: string
 }
 
 const getStoredValue = (key: string): string|undefined => {

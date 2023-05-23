@@ -1,0 +1,25 @@
+/* Chrome */
+#player::-webkit-media-controls-panel {
+  background-color: pink;
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  #player{
+    background-color: green;
+  }
+}
+/* 
+#player::-webkit-media-controls-panel:hover,
+#player::-webkit-media-controls-panel:focus,
+#player::-webkit-media-controls-panel:active,
+audio:hover, 
+audio:focus, 
+audio:active{
+-webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+} */
