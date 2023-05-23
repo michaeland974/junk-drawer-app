@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import styles from './styles/MusicPlayer.module.css';
 

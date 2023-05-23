@@ -1,25 +1,28 @@
+#player{
+  --background-gradient: linear-gradient(145deg, #dfdd70, 
+                                         var(--secondary-green));
+  background: var(--background-gradient);
+  border-radius: var(--border-radius);
+  box-shadow:  5px 5px 0px #848334;
+}
+
 /* Chrome */
 #player::-webkit-media-controls-panel {
-  background-color: pink;
+  background: var(--background-gradient);
 }
+
+#player::-webkit-media-controls-current-time-display{
+  font-family: ManualeExtraBold;
+  font-size: 1.25em;
+} 
 
 /* Firefox */
 @-moz-document url-prefix() {
   #player{
-    background-color: green;
+    filter: invert(0.9);
+    background: var(--secondary-blue);
+    box-shadow:  5px 5px 0px #afa4bc;
+    font-family: ManualeExtraBold;
+    font-size: 1.25em;
   }
 }
-/* 
-#player::-webkit-media-controls-panel:hover,
-#player::-webkit-media-controls-panel:focus,
-#player::-webkit-media-controls-panel:active,
-audio:hover, 
-audio:focus, 
-audio:active{
--webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
--moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
--webkit-transform: scale(1.05);
--moz-transform: scale(1.05);
-transform: scale(1.05);
-} */

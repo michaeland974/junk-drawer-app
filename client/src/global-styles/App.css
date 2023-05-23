@@ -5,18 +5,12 @@
 @font-face {  font-family: Manuale;
               src: url('./../assets/fonts/Manuale-Regular.ttf'); }
 #root{
-  --background: #8C7C6D;
-  --primary: #F2E4BB;
-  --primary-with-opacity: #f2e4bb7a;
   --secondary-blue: #345B73;
   --secondary-blue-with-opacity: #345b73c1;
   --secondary-purple: #544259;
   --secondary-purple-with-opacity: #8c72945b;
-  --secondary-pink: #D9B2A9;
-  --background2: #A6986F;
-  --secondary-pink2: #EBA2F2;
-  --secondary-purple2: #A177A6;
-  --secondary-blue2: #D3F2EA;
+  --secondary-green: #BFBE4C;
+  --secondary-green-with-opacity: #bfbd4ca7;
   --highlight: #BFBE4C;
   --white-with-opacity: rgba(255, 255, 255, 0.61);;
 
@@ -28,9 +22,8 @@
 }
 
 body{
-  position: sticky;
-  overflow: hidden;
+  overflow: auto;
   font-family: ManualeSemiBold;
   background-image: url('./../assets/background.svg');
-  /* height: 100svh; */
+  background-color: #A6986F;
 }
