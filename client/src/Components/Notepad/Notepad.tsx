@@ -11,7 +11,7 @@ export const Notepad = () => {
   const Empty = () => {
     return(
       <div id={styles['empty']}>
-        {[...Array(5)].map((el) => <span className={styles['line']}></span>)}
+        {[...Array(5)].map((_el) => <span className={styles['line']}></span>)}
       </div>
     );
   };
@@ -25,7 +25,6 @@ export const Notepad = () => {
                  <List notes={list}
                     actions={{set: setList, 
                               edit: editNote}}/>}
-      
     </div>
   );  
 };

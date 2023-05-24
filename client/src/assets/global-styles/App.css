@@ -1,9 +1,9 @@
 @font-face {  font-family: ManualeExtraBold;
-              src: url('./../assets/fonts/Manuale-ExtraBold.ttf'); }
+              src: url('./../fonts/Manuale-ExtraBold.ttf'); }
 @font-face {  font-family: ManualeSemiBold;
-              src: url('./../assets/fonts/Manuale-SemiBold.ttf'); }
+              src: url('./../fonts/Manuale-SemiBold.ttf'); }
 @font-face {  font-family: Manuale;
-              src: url('./../assets/fonts/Manuale-Regular.ttf'); }
+              src: url('./../fonts/Manuale-Regular.ttf'); }
 #root{
   --secondary-blue: #345B73;
   --secondary-blue-with-opacity: #345b73c1;
@@ -20,15 +20,10 @@
   --line-height-xl: 1rem;
   --fs-xl: clamp(2rem, 4vw, 3rem);
   --fs-400: clamp(1.25rem, 2.5vw, 1.5rem);
-}
 
-body{
-  display: grid;
-  grid-template-columns: [left]1fr [right]1fr;
   height: 100svh;
 
-  overflow: auto;
   font-family: ManualeSemiBold;
-  background-image: url('./../assets/background.svg');
+  background-image: url('./../background.svg');
   background-color: #A6986F;
 }
