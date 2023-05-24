@@ -27,8 +27,8 @@ input[type=checkbox]:checked{
 .button-group{
   display: flex;
   gap: var(--checkbox-size);
-    /* fixing overflow */
-  transform: translateX(calc(var(--checkbox-size) * -1));
+    /* fixing overflow from custom checkbox */
+  transform: translateX(calc(var(--checkbox-size) * -3));
 } 
 
 .input-group > input:checked + .text {

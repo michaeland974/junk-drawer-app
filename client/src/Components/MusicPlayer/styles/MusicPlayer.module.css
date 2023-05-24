@@ -1,6 +1,9 @@
 #player{
   --background-gradient: linear-gradient(145deg, #dfdd70, 
                                          var(--secondary-green));
+  width: calc(var(--mobile-dimension) * 1.5);
+  height: calc(var(--mobile-dimension) * 0.25);
+
   background: var(--background-gradient);
   border-radius: var(--border-radius);
   box-shadow:  5px 5px 0px #848334;

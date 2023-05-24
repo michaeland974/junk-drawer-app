@@ -12,8 +12,9 @@
   --secondary-green: #BFBE4C;
   --secondary-green-with-opacity: #bfbd4ca7;
   --highlight: #BFBE4C;
-  --white-with-opacity: rgba(255, 255, 255, 0.61);;
+  --white-with-opacity: rgba(255, 255, 255, 0.285);
 
+  --mobile-dimension: 12rem;
   --rotate: rotate(15deg);
   --border-radius: 8px;
   --line-height-xl: 1rem;
@@ -22,6 +23,10 @@
 }
 
 body{
+  display: grid;
+  grid-template-columns: [left]1fr [right]1fr;
+  height: 100svh;
+
   overflow: auto;
   font-family: ManualeSemiBold;
   background-image: url('./../assets/background.svg');
