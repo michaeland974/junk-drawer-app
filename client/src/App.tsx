@@ -9,8 +9,8 @@ export const App = () => {
   return (
     <>
     <MusicPlayer url='/stream'/>
-    <Stopwatch />
     <Notepad />
+    <Stopwatch />
     </>
   );
 };

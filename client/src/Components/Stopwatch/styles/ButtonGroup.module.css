@@ -21,17 +21,27 @@
   padding: var(--mobile-button-dimension);
 }
 
-#reset{ color: white;}
-#pause{ font-size: 0.5em;}
-#play{
-  font-size: 1em;
-  padding: 16px 15px 16px 17px;
-}
-
 .toggle-button:active, 
 #reset:active{
   opacity: 0.5;
 }
+
+#reset{ color: white;}
+#pause{ font-size: 0.5em;}
+#play{
+  font-size: 1em;
+  position: relative;
+}
+
+@media only screen and (max-height: 550px) {
+  #play > span{
+    position: absolute;
+    right: 15%;
+    bottom: 10%;
+  }
+}
+
+
 
 
 

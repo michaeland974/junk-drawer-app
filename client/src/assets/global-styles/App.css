@@ -22,8 +22,13 @@
   --fs-400: clamp(1.25rem, 2.5vw, 1.5rem);
 
   height: 100svh;
-
+  padding: 1rem;
   font-family: ManualeSemiBold;
   background-image: url('./../background.svg');
   background-color: #A6986F;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+

@@ -31,6 +31,12 @@ input[type=checkbox]:checked{
   transform: translateX(calc(var(--checkbox-size) * -3));
 } 
 
+@media only screen and (max-height: 550px) {
+  .button-group{
+    transform: translateX(calc(var(--checkbox-size) * -2));
+  }
+}
+
 .input-group > input:checked + .text {
   text-decoration: line-through
 }

@@ -24,7 +24,7 @@ export const ButtonGroup: React.FC<Props> = ({condition, actions, initialState})
         <button id={condition ? styles['play'] : styles['pause']}
                 onClick={() => actions.timerControl()} 
                 className={styles['toggle-button1']}
-                data-testid="toggle-button">{condition ? icons.play:  
+                data-testid="toggle-button">{condition ? <span>{icons.play}</span>:  
                                                          icons.pause}
         </button>
         <button id={styles['reset']}

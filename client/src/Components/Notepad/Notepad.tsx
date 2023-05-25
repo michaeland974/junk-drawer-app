@@ -11,7 +11,8 @@ export const Notepad = () => {
   const Empty = () => {
     return(
       <div id={styles['empty']}>
-        {[...Array(5)].map((_el) => <span className={styles['line']}></span>)}
+        {[...Array(5)].map((_el, i) => <span className={styles['line']}
+                                             key={i}></span>)}
       </div>
     );
   };
