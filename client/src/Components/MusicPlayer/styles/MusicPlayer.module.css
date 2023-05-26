@@ -6,7 +6,7 @@
 
   background: var(--background-gradient);
   border-radius: var(--border-radius);
-  box-shadow:  5px 5px 0px #848334;
+  box-shadow: var(--box-shadow-dimension-mobile) #848334;
 }
 
 /* Chrome */

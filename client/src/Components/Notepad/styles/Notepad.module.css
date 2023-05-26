@@ -19,7 +19,7 @@
   
   background: linear-gradient(145deg, #544259c1, 
                               var(--secondary-purple));
-  box-shadow:  5px 5px 0px #423446;
+  box-shadow: var(--box-shadow-dimension-mobile) #423446;
 }
 
 .container::-webkit-scrollbar { 

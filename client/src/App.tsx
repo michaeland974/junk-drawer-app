@@ -8,9 +8,9 @@ import './assets/global-styles/App.css';
 export const App = () => {
   return (
     <>
-    <MusicPlayer url='/stream'/>
-    <Notepad />
-    <Stopwatch />
+      <MusicPlayer url='/stream'/>
+      <Notepad />
+      <Stopwatch />
     </>
   );
 };

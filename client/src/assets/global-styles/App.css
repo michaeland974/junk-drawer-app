@@ -7,6 +7,8 @@
 #root{
   --secondary-blue: #345B73;
   --secondary-blue-with-opacity: #345b73c1;
+  --background-blue: #345b7395;
+  --background-blue-with-opacity: #345b7342;
   --secondary-purple: #544259;
   --secondary-purple-with-opacity: #8c72945b;
   --secondary-green: #BFBE4C;
@@ -14,8 +16,10 @@
   --highlight: #BFBE4C;
   --white-with-opacity: rgba(255, 255, 255, 0.285);
 
+  --box-shadow-dimension-mobile: 5px 5px 0px;
+  --box-shadow-dimension: 25px 25px 5px;
   --mobile-dimension: 12rem;
-  --rotate: rotate(15deg);
+  --rotate: rotate(45deg);
   --border-radius: 8px;
   --line-height-xl: 1rem;
   --fs-xl: clamp(2rem, 4vw, 3rem);
@@ -32,3 +36,33 @@
   justify-content: space-around;
 }
 
+@media only screen and (min-height: 800px) {
+  #root{
+    --mobile-dimension: 13rem;
+    padding: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  body{
+    position: relative;
+    background-image: url('./../background.svg');
+  }
+  
+  #root{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(10vh);
+    margin: auto;
+
+    width: 80vw;
+    height: 60vh;
+    
+    box-shadow:  var(--box-shadow-dimension) #11334784;
+    background: linear-gradient(to left top, var(--background-blue), 70%,
+                                             var(--background-blue-with-opacity));
+    border-radius: var(--border-radius);
+  }
+}
