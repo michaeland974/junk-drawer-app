@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import styles from './styles/MusicPlayer.module.css';
+import { WrapperWithShadow } from '../WrapperWithShadow';
 
 type Props = {
   url: string
@@ -18,16 +19,18 @@ export const MusicPlayer: React.FC<Props> = ({url}) => {
   }, []);
 
   return (
-    <audio id={styles['player']}
-           onTimeUpdate={() => {
-            localStorage.setItem('storedAudio', 
-              JSON.stringify(audioRef.current?.currentTime ?? 0));
-           }}
-           ref={audioRef}
-           controls           
-           preload="metadata"
-           loop>
-      <source src={url} type="audio/mpeg"/>
-    </audio>
+    <WrapperWithShadow className={styles['component-wrapper']}>
+      <audio id={styles['player']}
+            onTimeUpdate={() => {
+              localStorage.setItem('storedAudio', 
+                JSON.stringify(audioRef.current?.currentTime ?? 0));
+            }}
+            ref={audioRef}
+            controls           
+            preload="metadata"
+            loop>
+        <source src={url} type="audio/mpeg"/>
+      </audio>
+    </WrapperWithShadow>
   );
 };

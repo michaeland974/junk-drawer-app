@@ -5,6 +5,13 @@
 @font-face {  font-family: Manuale;
               src: url('./../fonts/Manuale-Regular.ttf'); }
 #root{
+  --main-blue: #486295;
+  --main-light-blue: #5990D9;
+  --second-blue: #333D60;
+  --background: #BF9460;
+  --highlight: #BF343F;
+  --grey: rgba(128, 128, 128, 0.525);
+
   --secondary-blue: #345B73;
   --secondary-blue-with-opacity: #345b73c1;
   --background-blue: #345b7395;
@@ -16,8 +23,7 @@
   --highlight: #BFBE4C;
   --white-with-opacity: rgba(255, 255, 255, 0.285);
 
-  --box-shadow-dimension-mobile: 5px 5px 0px;
-  --box-shadow-dimension: 25px 25px 5px;
+  --box-shadow-dimension: 5px 5px 0px;
   --mobile-dimension: 12rem;
   --rotate: rotate(45deg);
   --border-radius: 8px;
@@ -28,41 +34,10 @@
   height: 100svh;
   padding: 1rem;
   font-family: ManualeSemiBold;
-  background-image: url('./../background.svg');
-  background-color: #A6986F;
+  background-color: var(--background);
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-@media only screen and (min-height: 800px) {
-  #root{
-    --mobile-dimension: 13rem;
-    padding: 1.5rem;
-  }
-}
-
-@media only screen and (min-width: 650px) {
-  body{
-    position: relative;
-    background-image: url('./../background.svg');
-  }
-  
-  #root{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(10vh);
-    margin: auto;
-
-    width: 80vw;
-    height: 60vh;
-    
-    box-shadow:  var(--box-shadow-dimension) #11334784;
-    background: linear-gradient(to left top, var(--background-blue), 70%,
-                                             var(--background-blue-with-opacity));
-    border-radius: var(--border-radius);
-  }
-}
