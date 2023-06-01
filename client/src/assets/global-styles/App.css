@@ -5,34 +5,31 @@
 @font-face {  font-family: Manuale;
               src: url('./../fonts/Manuale-Regular.ttf'); }
 #root{
-  --main-blue: #486295;
-  --main-light-blue: #5990D9;
-  --second-blue: #333D60;
-  --background: #BF9460;
-  --highlight: #BF343F;
+  --background: #bf9460cd;
+  --background-without-opacity: #BF9460;
+  --main-blue: #2E3873;
+  --main-blue-with-opacity: #2e38734a;
+  --second-blue: #5666BF;  
+  --main-teal: #457369;
+  --main-teal-with-opacity: #69bc85;
+  --highlight: #69BFAD;
   --grey: rgba(128, 128, 128, 0.525);
+  --main-blue-gradient: linear-gradient(to bottom left, #2e3873a3, 
+                                        var(--main-blue));
+  --second-blue-gradient: linear-gradient(to bottom right, #5666bf9c, 
+                                              var(--second-blue));
 
-  --secondary-blue: #345B73;
-  --secondary-blue-with-opacity: #345b73c1;
-  --background-blue: #345b7395;
-  --background-blue-with-opacity: #345b7342;
-  --secondary-purple: #544259;
-  --secondary-purple-with-opacity: #8c72945b;
-  --secondary-green: #BFBE4C;
-  --secondary-green-with-opacity: #bfbd4ca7;
-  --highlight: #BFBE4C;
-  --white-with-opacity: rgba(255, 255, 255, 0.285);
-
-  --box-shadow-dimension: 5px 5px 0px;
   --mobile-dimension: 12rem;
-  --rotate: rotate(45deg);
   --border-radius: 8px;
   --line-height-xl: 1rem;
+  --transform: rotate(-30deg) skew(20deg) scale(0.7);
+  --transform2: rotate(20deg) skew(-15deg) scale(0.7);
+
   --fs-xl: clamp(2rem, 4vw, 3rem);
   --fs-400: clamp(1.25rem, 2.5vw, 1.5rem);
 
   height: 100svh;
-  padding: 1rem;
+  padding: 3rem;
   font-family: ManualeSemiBold;
   background-color: var(--background);
 

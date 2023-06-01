@@ -13,8 +13,9 @@
   align-items: center;
 
   border-radius: 50%;
-  background-color: white;
-  color: var(--secondary-blue); 
+  background-color: var(--main-blue);
+  /* color: var(--secondary-;  */
+  color: var(--background);
   line-height: 1;
   width: var(--mobile-button-dimension);
   height: var(--mobile-button-dimension);
@@ -26,7 +27,7 @@
   opacity: 0.5;
 }
 
-#reset{ color: white;}
+#reset{ color: var(--main-blue);}
 #pause{ font-size: 0.5em;}
 #play{
   font-size: 1em;

@@ -7,19 +7,17 @@
 }
 
 #player{
-  --background-gradient: linear-gradient(145deg, #dfdd70, 
-                                         var(--secondary-green));
   width: 100%;
   height: 100%;
-
-  background: var(--background-gradient);
   transform: translate(5%, -30%);
 }
 
 /* Chrome */
+#player,
 #player::-webkit-media-controls-panel {
-  background: var(--background-gradient);
-  
+  background-color: var(--background-without-opacity);
+  border: 5px solid var(--main-blue);
+  border-style: double;
 }
 
 #player::-webkit-media-controls-current-time-display{
@@ -31,8 +29,7 @@
 @-moz-document url-prefix() {
   #player{
     filter: invert(0.9);
-    background: var(--secondary-blue);
-    /* box-shadow:  5px 5px 0px #afa4bc; */
+    background: var(--main-light-blue);
     font-family: ManualeExtraBold;
     font-size: 1.25em;
   }

@@ -30,8 +30,5 @@ export const Notepad = () => {
                                 edit: editNote}}/>}
       </div>
     </WrapperWithShadow>
-
-    // <div className={styles['shadow-wrapper']}>
-    // </div>
   );  
 };

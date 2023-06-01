@@ -1,7 +1,6 @@
 .display{
-  color: white;
-  border-top: 1px solid var(--white-with-opacity);
-  /* border-top: 1px solid var(--primary-with-opacity); */
+  color: var(--main-blue);
+  border-top: 1px solid var(--main-blue-with-opacity);
 }
 
 #deciseconds{

@@ -13,12 +13,15 @@
   justify-content: center;
   gap: 0.5rem;
 
-  font-family: ManualeExtraBold;
-  font-size: var(--fs-xl); 
   text-align: center;
   width: 100%;
   height: 100%; 
-  background: linear-gradient(145deg, var(--secondary-blue-with-opacity), 
-                                      var(--secondary-blue));
+  
+  font-family: ManualeExtraBold;
+  font-size: var(--fs-xl); 
+  background-color: var(--background);
+  border: 5px solid var(--main-blue);
+  border-style: double;
+
   transform: translate(10%, -10%);
 }

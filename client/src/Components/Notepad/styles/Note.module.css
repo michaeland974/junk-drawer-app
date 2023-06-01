@@ -12,8 +12,7 @@ input[type=checkbox]{
   height: var(--checkbox-size);
   margin-right: calc(var(--checkbox-size) * 0.5);
   align-self: center;
-  /* border: 1px solid rgba(255, 255, 255, 0.205); */
-  border: 1px solid var(--white-with-opacity);
+  border: 1px solid var(--main-blue);
   border-radius: 50%;
   appearance: none;
   -webkit-appearance: none;
@@ -43,7 +42,7 @@ input[type=checkbox]:checked{
 
 #edit, 
 #delete{
-  color: var(--white-with-opacity); 
+  color: var(--main-blue); 
 }
 
 .selected{
