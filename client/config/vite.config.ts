@@ -11,7 +11,7 @@ const vitestConfig: VitestUserConfigInterface = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint(), 'prettier'], 
+  plugins: [react(), eslint()], 
   server: {
     port: 8000,
     host: true,

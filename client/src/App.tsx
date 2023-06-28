@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stopwatch } from './Components/Stopwatch/Stopwatch';
 import { Notepad } from './Components/Notepad/Notepad';
 import { MusicPlayer } from './Components/MusicPlayer/MusicPlayer';
