@@ -17,7 +17,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/stream': {
-          target: 'http://localhost:3001',
+          target: 'https://drawer-streaming.onrender.com',
           changeOrigin: true,
           secure: false
       }

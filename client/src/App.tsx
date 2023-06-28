@@ -7,7 +7,7 @@ import './assets/global-styles/App.css';
 export const App = () => {
   return (
     <>
-      <MusicPlayer url='http://localhost:3001/stream'/>
+      <MusicPlayer url='https://drawer-streaming.onrender.com/stream'/>
       <Notepad />
       <Stopwatch />
     </>
