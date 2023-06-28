@@ -21,14 +21,14 @@ export const MusicPlayer: React.FC<Props> = ({url}) => {
   return (
     <WrapperWithShadow className={styles['component-wrapper']}>
       <audio id={styles['player']}
-            onTimeUpdate={() => {
+             onTimeUpdate={() => {
               localStorage.setItem('storedAudio', 
                 JSON.stringify(audioRef.current?.currentTime ?? 0));
             }}
-            ref={audioRef}
-            controls           
-            preload="metadata"
-            loop>
+             ref={audioRef}
+             controls           
+             preload="metadata"
+             loop>
         <source src={url} type="audio/mpeg"/>
       </audio>
     </WrapperWithShadow>
