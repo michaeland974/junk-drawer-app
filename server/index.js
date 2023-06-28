@@ -4,11 +4,16 @@ const app = express();
 
 app.get("/favicon.ico", (req, res) => res.status(204));
 app.get("/stream", (req, res, next) => {
+  let audio;
+  const dir = fs.readdirSync("./audio");
+  const size = dir.reduce((total, file) => {
+    const path = "./audio/" + file;
+    return total + (fs.statSync(path).size);
+  }, 0);
+  
   res.setHeader("Content-Type","audio/mpeg");
   res.setHeader("Accept-Ranges", "bytes");
-  const dir = fs.readdirSync("./audio");
-  let audio;
-
+  
   const main = () => {
     if(!dir.length){
       res.end();
@@ -25,10 +30,7 @@ app.get("/stream", (req, res, next) => {
       });
     }
   }
-
   main();
 });
 
-app.listen(3001, () => {
-  console.log("Server started on port 3001")
-});
+app.listen(3001);
