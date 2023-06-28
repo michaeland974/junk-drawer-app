@@ -17,10 +17,11 @@
 /* Firefox */
 @-moz-document url-prefix() {
   #player{
-    filter: invert(0.9);
+    filter: invert(1);
     background: var(--main-light-blue);
     font-family: ManualeExtraBold;
     font-size: 1.25em;
+    transform: translate(10%, -20%);
   }
 }
 
