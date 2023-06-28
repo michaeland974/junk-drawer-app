@@ -5,11 +5,14 @@
   border: 5px solid var(--main-blue);
   border-style: double;
 }
-
 #player::-webkit-media-controls-current-time-display{
   font-family: ManualeExtraBold;
   font-size: 1.25em;
 } 
+
+#player{
+  transform: translate(5.5%, -20%);
+}
 
 /* Firefox */
 @-moz-document url-prefix() {
@@ -29,6 +32,12 @@
     margin-bottom: 3em;
     
     transform: rotate(-30deg) skew(20deg) scale(0.7);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #player{
+    transform: translate(6%, -22%);
   }
 }
 

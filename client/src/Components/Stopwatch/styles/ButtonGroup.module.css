@@ -34,11 +34,19 @@
   position: relative;
 }
 
-@media only screen and (max-height: 550px) {
+@media screen and (max-height: 550px) {
   #play > span{
     position: absolute;
     right: 15%;
     bottom: 10%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  #play > span{
+    position: absolute;    
+    left: 2.5%;
+    bottom: -7%;
   }
 }
 

@@ -1,5 +1,6 @@
 .container{
   display: flex;
+  position: relative;
   --checkbox-size: 0.75em;
 }
 
@@ -19,13 +20,15 @@ input[type=checkbox]{
 }
 
 input[type=checkbox]:checked{
-  border: 1px solid var(--secondary-purple);
-  background-color: var(--white-with-opacity);
+  border: 1px solid var(--main-blue);
+  background-color: var(--main-blue);
 }
 
 .button-group{
   display: flex;
   gap: var(--checkbox-size);
+  position: absolute;
+  right: -20%;
     /* fixing overflow from custom checkbox */
   transform: translateX(calc(var(--checkbox-size) * -3));
 } 
