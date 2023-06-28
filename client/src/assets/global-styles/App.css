@@ -14,6 +14,7 @@
   --main-teal-with-opacity: #69bc85;
   --highlight: #69BFAD;
   --grey: rgba(128, 128, 128, 0.525);
+  --light-grey: rgba(128, 128, 128, 0.21);
   --main-blue-gradient: linear-gradient(to bottom left, #2e3873a3, 
                                         var(--main-blue));
   --second-blue-gradient: linear-gradient(to bottom right, #5666bf9c, 
@@ -24,6 +25,8 @@
   --line-height-xl: 1rem;
   --transform: rotate(-30deg) skew(20deg) scale(0.7);
   --transform2: rotate(20deg) skew(-15deg) scale(0.7);
+  --hover-translation: translate(50px, -50px);
+  --hover-transition: all 0.8s;
 
   --fs-xl: clamp(2rem, 4vw, 2.5rem);
   --fs-400: clamp(1.25rem, 2.5vw, 1.5rem);

@@ -12,6 +12,7 @@
 
 #player{
   transform: translate(5.5%, -20%);
+  transition: var(--hover-transition);
 }
 
 /* Firefox */
@@ -33,6 +34,7 @@
     margin-bottom: 3em;
     
     transform: rotate(-30deg) skew(20deg) scale(0.7);
+    transition: var(--hover-transition);
   }
 }
 
@@ -41,4 +43,13 @@
     transform: translate(6%, -22%);
   }
 }
+
+.component-wrapper:has(#player:hover){
+  background-color: var(--light-grey);
+}
+
+#player:hover{
+  transform: translate(20px, -20px);
+}
+
 

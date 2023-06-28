@@ -4,6 +4,7 @@
   background-color: var(--grey);
   
   transform: rotate(-30deg) skew(20deg) scale(0.7);
+  transition: var(--hover-transition);
 }
 
 .container{
@@ -24,4 +25,13 @@
   border-style: double;
 
   transform: translate(10%, -10%);
+  transition: var(--hover-transition);
+}
+
+.component-wrapper:has(.container:hover){
+  background-color: var(--light-grey);
+}
+
+.container:hover{
+  transform: var(--hover-translation);
 }

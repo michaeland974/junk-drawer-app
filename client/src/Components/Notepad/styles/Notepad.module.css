@@ -4,6 +4,7 @@
   background-color: rgba(128, 128, 128, 0.525);
   
   transform: rotate(20deg) skew(-15deg) scale(0.7);
+  transition: var(--hover-transition);
 }
 
 .container{
@@ -24,6 +25,7 @@
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
   transform: translate(-10%, -10%);
+  transition: var(--hover-transition);
 }
 
 .container::-webkit-scrollbar { 
@@ -48,5 +50,14 @@
   height: 2px;
   background-color: var(--main-blue-with-opacity);
 }
+
+.component-wrapper:has(.container:hover){
+  background-color: var(--light-grey);
+}
+
+.container:hover{
+  transform: translate(-40px, -40px);
+}
+
 
 
