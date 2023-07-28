@@ -33,5 +33,6 @@
 }
 
 .container:hover{
-  transform: var(--hover-translation);
+  transform: translate(25px, -25px);
+  ;
 }
